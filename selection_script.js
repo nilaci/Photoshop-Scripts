@@ -1,3 +1,5 @@
+// Special thanks to: https://gist.github.com/opdude/3826350
+
 
 var docRef = app.activeDocument;
 var origDoc = app.activeDocument;
