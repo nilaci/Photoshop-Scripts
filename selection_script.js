@@ -19,9 +19,12 @@ var x_k = position[0];
 var y_k = position[1];
 var selSze = [7, 15, 21];
 
+var basePath = Folder.selectDialog("Select folder to save the images");
+var suffix = prompt("Please provide the type of fingerprint feature you are going to save...")
+var featurePath = basePath+"/"+suffix
+
 for (i = 0; i < selSze.length; i++) {
 	var floor = Math.floor(selSze[i]/2);	
-	var ceil = Math.ceil(selSze[i]/2);
 	var x = x_k - floor; // x pos from top left of future selection
 	var y = y_k - floor; // y pos from top left of future selection
 	var bounds = [[x, y], [x, y+selSze[i]], [x+selSze[i], y+selSze[i]], [x+selSze[i], y]];
@@ -35,10 +38,10 @@ for (i = 0; i < selSze.length; i++) {
 	newDoc.layers.getByName("Background").remove();
 	docRef.activeDocument = newDoc;
 	
-	var fileName = "bifurcation_"+selSze[i]+"x"+selSze[i];
-	var filePath = origDoc.path;
+	var filePath = featurePath+"/"+selSze[i]+"x"+selSze[i];
+	var startIdx = Folder(filePath).getFiles().length+1;
+	var fileName = ""+startIdx;
 	var saveFile = File(filePath + "/" + fileName);
-	if(saveFile.exists) saveFile.remove();
 	activeDocument.saveAs(saveFile, new PNGSaveOptions(), true, Extension.LOWERCASE);
 	
 	app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);
