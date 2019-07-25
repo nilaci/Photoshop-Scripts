@@ -1,7 +1,7 @@
 # Photoshop-Scripts
 Photoshop useful scripts.
 
-Selection script - selection_script.js
+**Selection script** - *selection_script.js*
 
 Used to select and save the selection as PNG image.
 I've created this script to help me create a training set for my biometric system based on fingerprints.
